@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8MB-Pj-VQk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LPTextView-->
+        <scene sceneID="mSg-2h-Ihk">
+            <objects>
+                <viewController id="fyd-7o-Rxw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TMP-HX-vag">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnR-FR-Iiw">
+                                <rect key="frame" x="20" y="84" width="335" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="xmI-ID-bhL"/>
+                                </constraints>
+                                <state key="normal" title="测试LPTextView"/>
+                                <connections>
+                                    <segue destination="9eu-t2-gPy" kind="show" id="A3h-GM-dqy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vzm-Ny-AKb" firstAttribute="trailing" secondItem="GnR-FR-Iiw" secondAttribute="trailing" constant="20" id="Nk1-sy-tlO"/>
+                            <constraint firstItem="GnR-FR-Iiw" firstAttribute="leading" secondItem="vzm-Ny-AKb" secondAttribute="leading" constant="20" id="TVV-jy-8ee"/>
+                            <constraint firstItem="GnR-FR-Iiw" firstAttribute="top" secondItem="vzm-Ny-AKb" secondAttribute="top" constant="20" id="lqd-gQ-epw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vzm-Ny-AKb"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="LPTextView" id="Ekk-lr-jbP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xm2-pF-YLg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="143"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="cfu-jT-Ut4">
+            <objects>
+                <viewController id="9eu-t2-gPy" customClass="LPHomeViewController" customModule="LPTextViewDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pAG-6X-S4Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lv0-CE-MYl" customClass="LPAtTextView" customModule="LPTextView">
+                                <rect key="frame" x="20" y="84" width="335" height="100"/>
+                                <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="soY-EW-Y9t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnw-2u-t9V">
+                                <rect key="frame" x="10" y="204" width="56" height="30"/>
+                                <state key="normal" title="Emotion"/>
+                                <connections>
+                                    <action selector="emotionButtonClicked:" destination="9eu-t2-gPy" eventType="touchUpInside" id="oFq-Zn-2r1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rzi-KU-1SQ">
+                                <rect key="frame" x="86" y="204" width="30" height="30"/>
+                                <state key="normal" title="@"/>
+                                <connections>
+                                    <action selector="atButtonClicked:" destination="9eu-t2-gPy" eventType="touchUpInside" id="laY-6B-CEf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8G-bi-UaW">
+                                <rect key="frame" x="136" y="204" width="36" height="30"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendButtonClicked:" destination="9eu-t2-gPy" eventType="touchUpInside" id="gdy-at-ka6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lv0-CE-MYl" firstAttribute="leading" secondItem="sJ3-Ef-6SU" secondAttribute="leading" constant="20" id="3xm-L1-7hN"/>
+                            <constraint firstItem="lv0-CE-MYl" firstAttribute="top" secondItem="sJ3-Ef-6SU" secondAttribute="top" constant="20" id="Hsx-fo-i4y"/>
+                            <constraint firstItem="rzi-KU-1SQ" firstAttribute="top" secondItem="lv0-CE-MYl" secondAttribute="bottom" constant="20" id="JME-Xo-XLO"/>
+                            <constraint firstItem="l8G-bi-UaW" firstAttribute="top" secondItem="lv0-CE-MYl" secondAttribute="bottom" constant="20" id="M8e-Ai-dX9"/>
+                            <constraint firstItem="Gnw-2u-t9V" firstAttribute="top" secondItem="lv0-CE-MYl" secondAttribute="bottom" constant="20" id="S9K-OY-Y1q"/>
+                            <constraint firstItem="rzi-KU-1SQ" firstAttribute="leading" secondItem="Gnw-2u-t9V" secondAttribute="trailing" constant="20" id="YKg-vR-h8x"/>
+                            <constraint firstItem="Gnw-2u-t9V" firstAttribute="leading" secondItem="sJ3-Ef-6SU" secondAttribute="leading" constant="10" id="lTS-vA-cen"/>
+                            <constraint firstItem="l8G-bi-UaW" firstAttribute="leading" secondItem="rzi-KU-1SQ" secondAttribute="trailing" constant="20" id="nbf-8D-OcV"/>
+                            <constraint firstItem="sJ3-Ef-6SU" firstAttribute="trailing" secondItem="lv0-CE-MYl" secondAttribute="trailing" constant="20" id="sTU-UM-fc8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sJ3-Ef-6SU"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="lv0-CE-MYl" id="ZWw-i7-oWG"/>
+                        <outlet property="textViewHeightConstraint" destination="soY-EW-Y9t" id="7p0-gS-tS1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0xd-YG-SBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1385" y="143"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Z8D-wU-MdR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8MB-Pj-VQk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Pxv-Zh-ZoT">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fyd-7o-Rxw" kind="relationship" relationship="rootViewController" id="ZSY-S1-jSX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YeS-8i-Be1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-31.199999999999999" y="142.57871064467767"/>
+        </scene>
+    </scenes>
+</document>

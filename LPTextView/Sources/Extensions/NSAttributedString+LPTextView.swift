@@ -48,9 +48,8 @@ public extension NSAttributedString {
         mutableAttrString.enumerateAttribute(key, in: allRange, options: options) { (obj, range, stop) in
             if let attachment = obj as? LPTextAttachment, let tagName = attachment.tagName {
                 mutableAttrString.removeAttribute(key, range: range)
-//                mutableAttrString.replaceCharacters(in: range, with: tagName)
                 
-                let attributes = [NSAttributedStringKey.LPEmotionID: attachment]
+                let attributes = [NSAttributedStringKey.LPEmotionID: tagName]
                 let attrString = NSAttributedString(string: tagName,
                                                     attributes: attributes)
                 mutableAttrString.replaceCharacters(in: range, with: attrString)

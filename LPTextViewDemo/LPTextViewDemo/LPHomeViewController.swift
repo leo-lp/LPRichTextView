@@ -28,7 +28,6 @@ class LPHomeViewController: UIViewController {
         textView.layer.borderWidth = 0.5
         textView.layer.cornerRadius = 4.0
         
-        
         let right = UIBarButtonItem(barButtonSystemItem: .camera,
                                     target: self,
                                     action: #selector(cameraButtonClicked))
@@ -44,7 +43,7 @@ class LPHomeViewController: UIViewController {
         let emoteVc = LPEmotionListController(style: .grouped)
         emoteVc.selectedBlock = { emote in
             guard let img = LPEmotion.shared.emoji(by: emote.0) else { return }
-            let attachment = LPTextAttachment(image: img, tag: emote.0)
+            let attachment = LPTextAttachment(image: img, scale: 1, tag: emote.0)
             self.textView.insertEmotion(attachment)
         }
         let navCtrl = UINavigationController(rootViewController: emoteVc)
@@ -63,10 +62,9 @@ class LPHomeViewController: UIViewController {
     }
     
     @IBAction func sendButtonClicked(_ sender: UIButton) {
-        let result = textView.textStorage.lp_parse { (index, _) -> String in
-            return "@{\(index)}"
-        }
-        textView.clearTextStorage()
+        let result = textView.textStorage.lp_parse { index,_ in "@{\(index)}" }
+        
+        //textView.clearTextStorage()
         
         print(result.description)
     }

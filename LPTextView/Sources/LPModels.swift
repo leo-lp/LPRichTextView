@@ -15,7 +15,7 @@ import UIKit
 // MARK: - LPAtUser
 
 public class LPAtUser: NSObject, NSCoding, NSCopying {
-    public static var AtCharacter: String = "@"
+    public static let AtCharacter: String = "@"
     
     public let id: Int
     public let name: String
@@ -61,6 +61,9 @@ public class LPAtUser: NSObject, NSCoding, NSCopying {
     }
 }
 
+// MARK: -
+// MARK: - LPEmotion
+
 public class LPEmotion: NSObject, NSCoding, NSCopying {
     public var placeholder: String? // 占位符
     public var imageScale: CGFloat
@@ -92,18 +95,28 @@ public class LPEmotion: NSObject, NSCoding, NSCopying {
         aCoder.encode(placeholder, forKey: "placeholder")
         aCoder.encode(imageScale, forKey: "imageScale")
         aCoder.encode(alignment.rawValue, forKey: "alignment")
-        aCoder.encode(font, forKey: "font")
-        aCoder.encode(image, forKey: "image")
+        aCoder.encode(font?.pointSize, forKey: "fontSize")
+        
+        if let image = image, let data = UIImagePNGRepresentation(image) {
+            aCoder.encode(data, forKey: "imageData")
+        }
     }
     
     public required convenience init?(coder aDecoder: NSCoder) {
         let placeholder = aDecoder.decodeObject(forKey: "placeholder") as? String ?? ""
         let imageScale = aDecoder.decodeObject(forKey: "imageScale") as? CGFloat ?? 1
         let alignmentValue = aDecoder.decodeInteger(forKey: "alignment")
-        let font = aDecoder.decodeObject(forKey: "font") as? UIFont
-        let image = aDecoder.decodeObject(forKey: "image") as? UIImage
-        
         let alignment = LPTextAttachment.LPAlignment(rawValue: alignmentValue) ?? .center
+        
+        var font: UIFont? = nil
+        if let fontSize = aDecoder.decodeObject(forKey: "fontSize") as? CGFloat {
+            font = UIFont.systemFont(ofSize: fontSize)
+        }
+        
+        var image: UIImage? = nil
+        if let imageData = aDecoder.decodeObject(forKey: "imageData") as? Data {
+            image = UIImage(data: imageData)
+        }
         self.init(placeholder: placeholder,
                   imageScale: imageScale,
                   alignment: alignment,

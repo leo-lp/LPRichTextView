@@ -12,7 +12,7 @@ extension LPEmotionTextView {
     
     open override func paste(_ sender: Any?) {
         guard let attrString = UIPasteboard.general.lp_attributedString
-            else { return }
+            , attrString.length > 0 else { return }
         
         let mutableAttrString = NSMutableAttributedString()
         mutableAttrString.append(attrString)
@@ -25,7 +25,7 @@ extension LPEmotionTextView {
         insertAttrString(mutableAttrString)
     }
     
-    override open func cut(_ sender: Any?) {
+    open override func cut(_ sender: Any?) {
         guard selectedRange.length > 0 else { return }
         
         let attrString = textStorage.attributedSubstring(from: selectedRange)
@@ -48,8 +48,8 @@ extension LPAtTextView {
     
     open override func paste(_ sender: Any?) {
         guard let attrString = UIPasteboard.general.lp_attributedString
-            else { return }
-
+            , attrString.length > 0 else { return }
+        
         let mutableAttrString = NSMutableAttributedString()
         mutableAttrString.append(textAttrString("", checkAtUser: true))
         mutableAttrString.append(attrString)
@@ -60,5 +60,9 @@ extension LPAtTextView {
         }
         
         insertAttrString(mutableAttrString)
+        
+        if isAtUserOfPreviousCharacter && !isSpaceOfLatterCharacter {
+            insertAttrString(textAttrString(" ", checkAtUser: false))
+        }
     }
 }

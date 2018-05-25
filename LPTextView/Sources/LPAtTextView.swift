@@ -136,20 +136,28 @@ open class LPAtTextView: LPEmotionTextView {
         }
     }
     
-    private var isAtUserOfPreviousCharacter: Bool {
+    var isAtUserOfPreviousCharacter: Bool {
         guard selectedRange.location > 0 else { return false }
         let key = NSAttributedStringKey.LPAtUser
         let loc = selectedRange.location - 1
         return textStorage.attribute(key, at: loc, effectiveRange: nil) is LPAtUser
     }
     
-    private var isAtUserOfLatterCharacter: Bool {
+    var isAtUserOfLatterCharacter: Bool {
         guard selectedRange.length == 0
             , textStorage.length > selectedRange.location else { return false }
         
         let key = NSAttributedStringKey.LPAtUser
         let loc = selectedRange.location
         return textStorage.attribute(key, at: loc, effectiveRange: nil) is LPAtUser
+    }
+    
+    var isSpaceOfLatterCharacter: Bool {
+        guard selectedRange.length == 0
+            , textStorage.length > selectedRange.location else { return false }
+        
+        let range = NSRange(location: selectedRange.location, length: 1)
+        return textStorage.attributedSubstring(from: range).string == " "
     }
     
     private func deleteAtCharacter(_ character: String) {

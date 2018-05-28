@@ -51,13 +51,13 @@ class LPHomeViewController: UIViewController {
     }
     
     @IBAction func atButtonClicked(_ sender: UIButton) {
-        let friendVc = LPFriendListController(style: .grouped)
-        friendVc.selectedBlock = { friend in
-            self.textView.insertUser(withID: friend.id,
-                                     name: friend.name,
+        let atVc = LPAtListController(style: .grouped)
+        atVc.selectedBlock = { at in
+            self.textView.insertUser(withID: at.id,
+                                     name: at.name,
                                      checkAt: nil)
         }
-        let navCtrl = UINavigationController(rootViewController: friendVc)
+        let navCtrl = UINavigationController(rootViewController: atVc)
         present(navCtrl, animated: true, completion: nil)
     }
     
@@ -89,13 +89,13 @@ extension LPHomeViewController: LPTextViewDelegate {
     /// 当textView输入@字符后调用
     func textView(_ textView: UITextView,
                   inputAtCharacter character: String) {
-        let friendVc = LPFriendListController(style: .grouped)
-        friendVc.selectedBlock = { friend in
-            self.textView.insertUser(withID: friend.id,
-                                     name: friend.name,
+        let atVc = LPAtListController(style: .grouped)
+        atVc.selectedBlock = { at in
+            self.textView.insertUser(withID: at.id,
+                                     name: at.name,
                                      checkAt: character)
         }
-        let navCtrl = UINavigationController(rootViewController: friendVc)
+        let navCtrl = UINavigationController(rootViewController: atVc)
         present(navCtrl, animated: true, completion: nil)
     }
 }
